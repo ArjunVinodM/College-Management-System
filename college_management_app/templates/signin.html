@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+
+  .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  }
+
+  .form-signin .form-floating:focus-within {
+  z-index: 2;
+  }
+</style>
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+      {% for message in messages %}
+      <h5>
+          <div class="alert alert-danger mt-5">
+              {{ message }}
+          </div>
+      </h5>
+      {% endfor %}
+  </div>
+  <div class="col-md-4"></div>
+</div>
+    
+<main class="form-signin">
+  <form action="{% url 'login_user' %}" method='post'>
+    {% csrf_token %}
+
+    <h1 class="h3 mb-3 fw-normal text-center"><b>Please LogIn</b></h1><br><br><br>
+
+    <div class="form-floating">
+      <input type="user" class="form-control" id="floatingInput" name="Username">
+      <label for="floatingInput">Username</label><br>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" name="Password">
+      <label for="floatingPassword">Password</label><br>
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+  </form>
+</main>
+
+{% endblock %}

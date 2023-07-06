@@ -1,0 +1,32 @@
+{% extends 'user_base.html' %}
+{% block content %}
+
+{% load static %}
+
+<body style="background: black;">
+
+  <div style="text-align: center; padding-top: 50px; color: white;">
+
+    {% if tchr.Tchr_Image %}
+      <img src="{{tchr.Tchr_Image.url}}" alt="" style="width: 150px; height: 200px;  border-radius: 50%;"><br><br>
+    {% else %}
+      <img src="{% static 'images/default.jpg' %}" alt="" width: "150px" height: "200px" style="border-radius: 50%;";><br><br>
+    {% endif %}
+  
+    <h1 style="text-align: center;"><b>{{ user.first_name }} {{ user.last_name }}</b></h1><br>
+  
+    <h4><b>Course : {{ tchr.Course.Course_Name }}</b></h4><br>
+    <h4><b>Phone no : {{ tchr.Tchr_Phone }}</b></h4><br>
+    <h4><b>Email Id: {{ user.email }}</b></h4><br>
+    <h4><b>Age : {{ tchr.Tchr_Age }}</b></h4><br>
+    <h4><b>Address : {{ tchr.Tchr_Address }}</b></h4><br>
+    <h4><b>Gender : {{ tchr.Tchr_Gender }}</b></h4><br>
+    <h4><b>Joining Date : {{ tchr.Tchr_Joining_Date }}</b></h4>
+  
+  
+  </div>
+  
+  {% endblock %}
+  
+</body>
+

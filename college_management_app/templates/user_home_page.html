@@ -1,0 +1,19 @@
+{% extends 'user_base.html' %}
+{% block content %}
+
+<style>
+  .body-home{
+    background: black;
+    text-align: center;
+  }
+  h1{
+    margin-top: 15%;
+    color: white;
+  }
+</style>
+
+<body class="body-home">
+  <h1>Welcome <span style="color: red;">{{user.first_name}} {{user.last_name}}</span></h1>
+</body>
+
+{% endblock %}

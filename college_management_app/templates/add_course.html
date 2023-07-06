@@ -1,0 +1,38 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<style>
+
+  .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  }
+
+  .form-signin .form-floating:focus-within {
+  z-index: 2;
+  }
+  
+</style>
+    
+<main class="form-signin">
+  <form action="{% url 'course_adding' %}" method='post'>
+    {% csrf_token %}
+    
+    <h1 class="h3 mb-3 fw-normal text-center"><b>Add Course</b></h1><br><br><br>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name='cou_name'>
+      <label for="floatingInput">Course Name</label><br>
+    </div>
+    <div class="form-floating">
+      <input type="number" class="form-control" id="floatingPassword" name='cou_fee'>
+      <label for="floatingPassword">Course Fee</label><br>
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Add</button>
+  </form>
+</main>
+
+{% endblock %}

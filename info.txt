@@ -1,0 +1,4 @@
+env name : college
+database : Mysql
+admin : admin
+admin password : 12345

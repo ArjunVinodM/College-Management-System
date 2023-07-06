@@ -1,0 +1,70 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+{% load static %}
+
+<style>
+  table{
+    padding: 15px;
+  }
+</style>
+
+<body style="background: black;">
+
+  <h1 style="text-align: center;  color: red; padding-top: 25px;"><b>Students <span style="color: white;">List</span></b></h1><br>
+
+<table class="table table-light table-hover">
+  <thead>                             
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Age</th>
+      <th>Course</th>
+      <th>Course Fee</th>
+      <th>Address</th>
+      <th>Gender</th>
+      <th>Phone no</th>
+      <th>Email</th>
+      <th>Image</th>
+      <th>Joining Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for s in students %}
+    <tr>
+      <td>{{ s.id }}</td>
+      <td>{{ s.Stu_first_name }}</td>
+      <td>{{ s.Stu_last_name }}</td>
+      <td>{{ s.Stu_age }}</td>
+      <td>{{ s.Course.Course_Name }}</td>
+      <td>{{ s.Course.Course_Fee }}</td>
+      <td>{{ s.Stu_address }}</td>
+      <td>{{ s.Stu_gender }}</td>
+      <td>{{ s.Stu_phone }}</td>
+      <td>{{ s.Stu_email }}</td>
+
+      {% if s.Stu_image %}
+      <td>
+        <img src="{{ s.Stu_image.url }}" style="width: 100px;">
+      </td>
+      {% else %}
+      <td>
+        <img src="{% static 'images/default.jpg' %}" alt="" style="width: 100px;">
+      </td>
+      {% endif %}
+
+      <td>{{ s.Stu_joining_date }}</td>
+      <td>
+        <button><a href="{% url 'delete_student' s.id %}">Delete</a></button>
+      </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+
+{% endblock %}
+  
+</body>
+

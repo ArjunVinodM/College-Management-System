@@ -1,0 +1,29 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<style>
+  .body-home{
+    background: black;
+    text-align: center;
+  }
+  h1{
+    margin-top: 15%;
+    color: white;
+  }
+</style>
+
+<div class="container">
+  {% for message in messages %}
+<h5>
+  <div class="alert alert-danger mt-5" style="width: 50%;">
+      {{ message }}
+  </div>
+</h5>
+  {% endfor %}
+</div>
+
+<body class="body-home">
+  <h1><b>Welcome To <span style="color: red;">Admin </span>Module...</b></h1>
+</body>
+
+{% endblock %}

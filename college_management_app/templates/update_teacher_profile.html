@@ -1,0 +1,77 @@
+{% extends 'user_base.html' %}
+{% block content %}
+
+{% load static %}
+
+<style>
+
+  .form-signup {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  }
+
+  .form-signup .form-floating:focus-within {
+  z-index: 2;
+  }
+
+</style>
+    
+<main class="form-signup">
+  <form action="/teacher_update/{{ tchr.id }}" method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <h1 class="h3 mb-3 fw-normal text-center"><b>Update Your Profile Here...</b></h1><br><br>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name='u_first_name' value="{{ tchr.Teacher.first_name}}">
+      <label for="floatingInput">First Name</label>
+    </div><br>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name='u_last_name' value="{{ tchr.Teacher.last_name}}">
+      <label for="floatingInput">Last Name</label>
+    </div><br>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name='u_age' value="{{ tchr.Tchr_Age }}">
+      <label for="floatingInput">Age</label>
+    </div><br>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name='u_address' value="{{ tchr.Tchr_Address }}">
+      <label for="floatingInput">Address</label>
+    </div><br>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name='u_gender' value="{{ tchr.Tchr_Gender }}">
+      <label for="floatingInput">Gender</label>
+    </div><br>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name='u_phn_no' value="{{ tchr.Tchr_Phone }}">
+      <label for="floatingInput">Phone no</label>
+    </div><br>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" name='u_email'  value="{{ tchr.Teacher.email }}">
+      <label for="floatingInput">Email address</label>
+    </div><br>
+
+    {% if tchr.Tchr_Image %}
+      <img src="{{tchr.Tchr_Image.url}}" alt="" style="width: 100px;"><br><br>
+    {% else %}
+      <img src="{% static 'images/default.jpg' %}" alt="" width: "200px" height: "300px"><br><br>
+    {% endif %}
+    <label> Upload Profile Picture </label><br>
+    <div class="input-group mb-3">
+      <input type="file" class="form-control" id="inputGroupFile02" name='u_file' accept='image/*'>
+    </div><br>
+
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Update</button>
+  </form>
+</main>
+
+{% endblock %}

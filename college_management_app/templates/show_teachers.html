@@ -1,0 +1,62 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+{% load static %}
+
+<body style="background: black;">
+  
+  <h1 style="text-align: center; color: red; padding-top: 25px;"><b>Teachers <span style="color: white;">List</span></b></h1><br>
+
+  <table class="table table-light table-hover">
+    <thead>                             
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Course</th>
+        <th>Address</th>
+        <th>Gender</th>
+        <th>Phone no</th>
+        <th>Email</th>
+        <th>Image</th>
+        <th>Joining Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in teachers %}
+      <tr>
+        <td>{{ t.Teacher.id }}</td>
+        <td>{{ t.Teacher.first_name }}</td>
+        <td>{{ t.Teacher.last_name }}</td>
+        <td>{{ t.Tchr_Age }}</td>
+        <td>{{ t.Course.Course_Name }}</td>
+        <td>{{ t.Tchr_Address }}</td>
+        <td>{{ t.Tchr_Gender }}</td>
+        <td>{{ t.Tchr_Phone }}</td>
+        <td>{{ t.Teacher.email }}</td>
+  
+        {% if t.Tchr_Image %}
+        <td>
+          <img src="{{ t.Tchr_Image.url }}" style="width: 100px;">
+        </td>
+        {% else %}
+        <td>
+          <img src="{% static 'images/default.jpg' %}" alt=""  style="width: 100px;">
+        </td>
+        {% endif %}
+  
+        <td>{{ t.Tchr_Joining_Date }}</td>
+        <td>
+          <button><a href="{% url 'delete_teacher' t.id %}">Delete</a></button>
+        </td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+  
+  {% endblock %}
+
+</body>
+

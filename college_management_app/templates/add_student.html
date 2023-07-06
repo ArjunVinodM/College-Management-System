@@ -1,0 +1,76 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<style>
+
+  .form-signup {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  }
+
+  .form-signup .form-floating:focus-within {
+  z-index: 2;
+  }
+
+</style>
+
+<main class="form-signup">
+<form action="{% url 'student_registration' %}" method='post' enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <h1 class="h3 mb-3 fw-normal text-center"><b>Add Student</b></h1><br><br>
+
+  <div class="form-floating">
+    <input type="text" class="form-control" id="floatingInput" name='s_first_name'>
+    <label for="floatingInput">First Name</label>
+  </div><br>
+
+  <div class="form-floating">
+    <input type="text" class="form-control" id="floatingInput" name='s_last_name'>
+    <label for="floatingInput">Last Name</label>
+  </div><br>
+
+  <div class="form-floating">
+    <input type="text" class="form-control" id="floatingInput" name='s_age'>
+    <label for="floatingInput">Age</label>
+  </div><br>
+
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Address</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='s_address'></textarea>
+  </div><br>
+
+  <div class="form-floating">
+    <input type="text" class="form-control" id="floatingInput" name='s_gender'>
+    <label for="floatingInput">Gender</label>
+  </div><br>
+
+  <div class="form-floating">
+    <input type="number" class="form-control" id="floatingInput" name='s_phn_no'>
+    <label for="floatingInput">Phone no</label>
+  </div><br>
+
+  <select class="form-select" aria-label="Default select example" name='s_select_course'>
+    <option selected>Courses</option>
+    {% for c in course %}
+    <option value="{{ c.id }}">{{c.Course_Name}}</option>
+    {% endfor %}
+  </select><br>
+
+  <div class="form-floating">
+    <input type="email" class="form-control" id="floatingInput" name='s_email'>
+    <label for="floatingInput">Email address</label>
+  </div><br>
+
+  <label> Upload Profile Picture </label><br>
+  <div class="input-group mb-3">
+    <input type="file" class="form-control" id="inputGroupFile02" name='s_file' accept='image/*'>
+  </div><br>
+
+  <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+</form>
+</main>
+
+{% endblock %}
